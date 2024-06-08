@@ -1,0 +1,96 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+
+// user model
+
+model User {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  email     String  @unique
+  name      String?
+  emailVerified DateTime?
+  image     String?
+  hashedPassword  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // relations
+  conversationIds String[] @db.ObjectId
+  conversations Conversation[] @relation(fields: [conversationIds] , references: [id])
+
+  // relations
+  SeenMessageIds String[] @db.ObjectId
+  SeenMessages Message[] @relation("Seen",fields: [SeenMessageIds] , references: [id])
+
+  accounts Account[]
+  messages Message[]
+}
+
+
+// account model
+model Account {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String @db.ObjectId
+  type      String
+  provider  String
+  providerAccountId String
+  refresh_token String? @db.String
+  access_token String? @db.String
+  expires_at Int? 
+  token_type String? 
+  scope String? 
+  id_token String? @db.String
+  session_state String? 
+
+  // relations
+  user User @relation(fields: [userId], references: [id] , onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+
+
+
+// conversation model
+model Conversation {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  name     String?
+  createdAt DateTime @default(now())
+  lastMessageAt DateTime @default(now())
+  isGroup Boolean? @default(false)
+
+  // relations
+  userIds String[] @db.ObjectId
+  users User[] @relation(fields: [userIds] , references: [id])
+
+  messageIds String[] @db.ObjectId
+  messages Message[] 
+}
+
+
+// message model
+model Message {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  body      String?
+  image    String?
+  createdAt DateTime @default(now())
+  
+
+  // relations
+  SeenIds String[] @db.ObjectId
+  SeenBy User[] @relation("Seen",fields: [SeenIds] , references: [id])
+
+  ConversationId String @db.ObjectId
+  conversation Conversation @relation(fields: [ConversationId], references: [id], onDelete: Cascade)
+
+  senderId String @db.ObjectId
+  sender User @relation(fields: [senderId], references: [id], onDelete: Cascade)
+}
