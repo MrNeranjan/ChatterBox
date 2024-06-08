@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useCallback } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
@@ -9,6 +10,9 @@ import "./AuthForm.css";
 import Input from "../components/Input";
 import Button from "../components/button";
 import SocialActionButton from "../components/socialActionButton";
+import { toast } from 'react-hot-toast';
+import {signIn} from 'next-auth/react';
+
 
 function AuthForm() {
   const [LogOrReg, setLogOrReg] = useState("LOGIN");
@@ -27,11 +31,27 @@ function AuthForm() {
     setLoading(true);
 
     if (LogOrReg === "LOGIN") {
-      //api access login
-      console.log("login");
+      signIn('Credentials',{...data,redirect:false})
+      .then((callback)=>{
+        if(callback?.error){
+          toast.error('Invalid credentials')
+        }
+        if (callback?.ok && !callback?.error) {
+          toast.success('Logged in successfully')
+        }
+      })
+      .finally(()=>setLoading(false))
+      
     } else {
-      //api access register
-      console.log("register");
+      axios.post('/api/register',data)
+      .catch(()=>toast.error('Something went wrong'))
+      .then((callback)=>{
+        if(callback?.data){
+          toast.success('Registered successfully')
+        }
+      })
+      .finally(()=>setLoading(false))
+
     }
   }
 
