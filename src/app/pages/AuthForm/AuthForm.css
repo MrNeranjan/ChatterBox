@@ -1,0 +1,128 @@
+
+
+.authform_container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+} 
+.authform_container_form  {  
+    width: 350px;
+    background-color: var(--color-white);
+    padding: 1rem 2rem;
+    margin: 2rem 0rem;
+    border-radius: 3px;
+
+
+}
+.authform_container_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.authform_container_header_logo {
+    color: var(--color-Azure);
+    width: 30px;
+    height: 30px;
+}
+
+.authform_container_header h1 {
+    color: var(--color-black);
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.authform_container_bottomtext {
+    text-align: center;
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.authform_container_bottomtext span {
+    color: var(--color-mediumGray);
+    font-weight: 400;
+    font-size: 12px;
+    background: white;
+    padding: 0 10px;
+    z-index: 1;
+    position: relative;
+}
+
+.authform_container_bottomtext::before,
+.authform_container_bottomtext::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 0.5px;
+    background: var(--color-mediumGray);
+}
+
+.authform_container_bottomtext::before {
+    left: 0;
+}
+
+.authform_container_bottomtext::after {
+    right: 0;
+}
+
+.authform_container_Socialaction {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.authform_container_toggling {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    color: var(--color-mediumGray);
+    font-weight: 450;
+    font-size: 12px;
+    
+}
+
+
+
+@media screen and (max-width: 431px) {
+
+    .authform_container_form  {  
+        width: 290px;
+        background-color: var(--color-white);
+        padding: 1rem 2rem;
+        margin: 2rem 0rem;
+        border-radius: 3px;
+    }
+
+    .authform_container_header h1{
+        font-size: 1.2rem;
+        text-align: center
+    }
+  }
+
+  
+
+  
+@media screen and (max-width: 295px) {
+
+    .authform_container_form  {  
+        width: 250px;
+        background-color: var(--color-white);
+        padding: 1rem 2rem;
+        margin: 2rem 0rem;
+        border-radius: 3px;
+    }
+
+    .authform_container_header h1{
+        font-size: 1rem;
+        text-align: center
+    }
+  }
+
+  

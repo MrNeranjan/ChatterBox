@@ -1,0 +1,117 @@
+
+.Input_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+ 
+}
+
+.Input_container label {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.Input_container_input_normal {
+    height: 25px;
+    border-color: var(--color-gray);
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.Input_container_input_normal:focus {
+    border-color: var(--color-Azure);
+    border-width: 1px;
+}
+
+.Input_container_input_normal:hover {
+    border-color: var(--color-Azure);
+    transform: scale(1.1);
+    border-width: 1px;
+    
+}
+
+.Input_container_input_error{
+    border-color: var(--color-ErrorRed);
+}
+
+.Input_container_input_disabled:hover {
+    border-color: var(--color-gray);
+    transform: none;
+    border-width: 1px;
+}
+
+
+
+
+/* FOR BUTTON */
+.button_container{
+    width: 100%;
+    padding: 0.4rem 0;
+    color: var(--color-white);
+    background-color: var(--color-Azure);
+    border-width:0;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+
+}
+
+.button_container:hover {
+    background-color: var(--color-gray);
+    color: var(--color-Azure);
+}
+
+
+.button_container_disable {
+    background-color: var(--color-gray);
+}
+
+.button_container_disable:hover {
+    background-color: var(--color-gray);
+    color: var(--color-white);
+}
+
+
+
+/* SocialActionButton_container */
+
+.SocialActionButton_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 2px;
+    border-color: var(--color-mediumGray);
+    background-color: none;
+    border-width: 1px;
+    margin-bottom: 1rem;
+    
+}
+
+.SocialActionButton_container_button {
+    width: 90%;
+    border-radius: 2px;
+    border-color: var(--color-mediumGray);
+    background-color: none;
+    border-width: 1px;
+    
+}
+
+.SocialActionButton_container_icon {
+    margin: 2px 0;
+    
+}
+
+.SocialActionButton_container_button:hover{
+    transform: scale(1.1);
+    color: var(--color-Azure);
+}
+.SocialActionButton_container_disabled:hover {
+    transform: none;
+}
