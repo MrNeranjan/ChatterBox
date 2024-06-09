@@ -1,0 +1,29 @@
+.Users_container {
+    display: flex;
+    flex-direction: row-reverse;
+    height :100vh;
+}
+
+.Users_container_emptySate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 80%;
+    
+}
+
+@media screen and (max-width: 950px) {
+    .Users_container_emptySate {
+        width: 75%;;
+    }
+    
+}
+
+
+@media screen and (max-width: 768px) {
+    .Users_container_emptySate {
+        display: none;
+    }
+    
+}

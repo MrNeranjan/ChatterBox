@@ -116,3 +116,83 @@
 .SocialActionButton_container_disabled:hover {
     transform: none;
 }
+
+
+
+/* EmptyEstate_container */
+
+.EmptyEstate_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    width: 100%;
+    height: 100vh;
+}
+  
+.EmptyEstate_container_text h3 {
+    display: flex;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-gray);
+}
+
+
+/* DesktopSideBar_container */
+
+.DesktopSideBar_container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 60px; 
+    height: 100vh;
+    border-right: 0.3px solid var(--color-lightGray);
+}
+
+
+@media screen and (max-width: 768px) {
+    .DesktopSideBar_container {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        width: 100%; 
+        height: 60px;
+        background-color: hsl(0, 0%, 57%);
+        border-top: 0.3px solid var(--color-lightGray);
+    }
+
+    .DesktopSideBar_nav {
+        width: 100%;
+    }
+    .DesktopSideBar_nav_mapping {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+}
+
+
+
+
+
+/* DesktopItem */
+
+.DesktopItem_icon {
+    color: var(--color-gray);
+    font-size: 1.5rem;
+    margin: 0.6rem 0;
+}
+
+.DesktopItem_icon:hover {
+    color: var(--color-Azure);
+    transform: scale(1.1);
+}
+
+.DesktopItem_icon_active {
+    color: var(--color-green);
+    font-size: 2rem;
+}

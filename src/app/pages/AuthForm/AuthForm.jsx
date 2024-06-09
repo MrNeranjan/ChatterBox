@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { FaFacebookMessenger } from "react-icons/fa";
@@ -11,13 +11,23 @@ import Input from "../components/Input";
 import Button from "../components/button";
 import SocialActionButton from "../components/socialActionButton";
 import { toast } from 'react-hot-toast';
-import {signIn} from 'next-auth/react';
+import {signIn, useSession} from 'next-auth/react';
+import { useRouter } from "next/navigation";
 
 
 function AuthForm() {
+  const session = useSession();
+  const router = useRouter();
   const [LogOrReg, setLogOrReg] = useState("LOGIN");
   const [isLoading, setLoading] = useState(false);
   const { register, handleSubmit, errors } = useForm();
+
+  useEffect(()=>{
+    if(session?.status === 'authenticated'){
+      router.push('/users')
+    }
+  },[session?.status,router])
+
 
   const toggleLogOrReg = useCallback(() => {
     if (LogOrReg === "LOGIN") {
@@ -31,19 +41,22 @@ function AuthForm() {
     setLoading(true);
 
     if (LogOrReg === "LOGIN") {
-      signIn('Credentials',{...data,redirect:false})
+      signIn('credentials',{...data,redirect:false})
+      
       .then((callback)=>{
         if(callback?.error){
           toast.error('Invalid credentials')
         }
         if (callback?.ok && !callback?.error) {
           toast.success('Logged in successfully')
+          router.push('/users')
         }
       })
       .finally(()=>setLoading(false))
       
     } else {
       axios.post('/api/register',data)
+      .then(()=>signIn('credentials',data))
       .catch(()=>toast.error('Something went wrong'))
       .then((callback)=>{
         if(callback?.data){
@@ -57,7 +70,18 @@ function AuthForm() {
 
   function SocialLogin(action) {
     setLoading(true);
-    //git hub or google account
+    
+    signIn(action,{redirect:false})
+    .then((callback)=>{
+      if(callback?.error){
+        toast.error('Invalid credentials')
+      }
+      if(callback?.ok && !callback?.error){
+        toast.success('Logged in successfully')
+      }
+    })
+
+    .finally(()=>setLoading(false))
   }
 
   return (
@@ -105,12 +129,12 @@ function AuthForm() {
         </div>
         <div className="authform_container_Socialaction">
           <SocialActionButton
-            onclick={SocialLogin}
+            onclick={()=>SocialLogin('github')}
             icon={FaGithub}
             disabled={isLoading}
           />
           <SocialActionButton
-            onclick={SocialLogin}
+            onclick={()=>SocialLogin('google')}
             icon={AiFillGoogleCircle}
             disabled={isLoading}
           />

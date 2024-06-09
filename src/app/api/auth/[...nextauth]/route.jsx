@@ -12,7 +12,7 @@ export const authOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
         CredentialsProvider({
-            name: 'Credentials',
+            name: 'credentials',
             credentials: {
                 Email: { label: "email", type: "text" },
                 password: { label: "Password", type: "password" }

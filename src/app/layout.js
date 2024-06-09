@@ -1,6 +1,7 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import ToasterContext from "./context/ToasterContext";
+import AuthContext from "./context/AuthContext";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -12,12 +13,14 @@ export const metadata = {
   description: "Developed by Neranjan Pushpakumara",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children,session }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ToasterContext/>
-        {children}
+        <AuthContext session={session}>
+          <ToasterContext/>
+          {children}
+        </AuthContext>
       </body>
     </html>
   );
