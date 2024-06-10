@@ -1,0 +1,39 @@
+.Conversation_container {
+    display: flex;
+    flex-direction: row-reverse;
+    height :100vh;
+}
+
+.Conversation_container_emptySate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 80%;
+    
+}
+
+/* .Conversation_container_hidden {
+    display: none;
+} */
+
+@media screen and (max-width: 1250px) {
+    .Conversation_container_emptySate {
+        width: 75%;;
+    }
+    
+}
+
+@media screen and (max-width: 950px) {
+    .Conversation_container_emptySate {
+        width: 70%;;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .Conversation_container_emptySate {
+        display: none;
+    }
+    
+}

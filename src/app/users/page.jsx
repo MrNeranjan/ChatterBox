@@ -11,9 +11,6 @@ export default function Users() {
       <div className='Users_container_emptySate'>
          <EmptyEstate />
       </div>
-     <div className='Users_container_leftside'>
-
-     </div>
     </div>
   )
 }

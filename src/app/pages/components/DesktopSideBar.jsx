@@ -34,7 +34,6 @@ function DesktopSideBar({ currentUser }) {
           </div>
         </div>
       </nav>
-      <nav></nav>
     </div>
   );
 }
