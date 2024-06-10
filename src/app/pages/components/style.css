@@ -140,10 +140,28 @@
 
 /* DesktopSideBar_nav_avatar */
 .DesktopSideBar_nav_avatar {
+    cursor: pointer;
     position: absolute;
     bottom: 1rem;
     left: 0.5rem;
+    
 }
+
+.DesktopSideBar_nav_avatar:hover {
+    opacity: 0.6;
+    
+}
+
+.DesktopSideBar_nav_avatar_status{
+    position: absolute;
+    top: 0px; 
+    right: 0px;
+    width: 10px;
+    height: 10px;
+    background-color:var(--color-green) ;
+    border-radius: 50%;
+    border: 1px solid white; 
+  }
 
 /* DesktopSideBar_container */
 
@@ -187,6 +205,11 @@
         left: 0;
 
     }
+    .DesktopSideBar_nav_avatar_status{
+        top: 10px;
+        right: 10px;    
+
+      }
     
 }
 

@@ -13,13 +13,19 @@
     
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1250px) {
     .Users_container_emptySate {
         width: 75%;;
     }
     
 }
 
+@media screen and (max-width: 950px) {
+    .Users_container_emptySate {
+        width: 70%;;
+    }
+    
+}
 
 @media screen and (max-width: 768px) {
     .Users_container_emptySate {

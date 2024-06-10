@@ -8,11 +8,11 @@ import Avatar from "./avatar";
 function DesktopSideBar({ currentUser }) {
   const routes = UseRoutes();
   const [isOpen, setIsOpen] = useState(false);
-  console.log(currentUser);
+  
   return (
     <div className="DesktopSideBar_container">
       <nav className="DesktopSideBar_nav">
-        <dev className="DesktopSideBar_nav_mapping">
+        <div className="DesktopSideBar_nav_mapping">
           {routes.map((item) => (
             <DesktopItem
               key={item.label}
@@ -27,9 +27,12 @@ function DesktopSideBar({ currentUser }) {
             className="DesktopSideBar_nav_avatar"
             onClick={() => setIsOpen(true)}
           >
-            <Avatar />
+            <Avatar user={currentUser}/>
+            <span
+              className="DesktopSideBar_nav_avatar_status"
+            ></span>
           </div>
-        </dev>
+        </div>
       </nav>
       <nav></nav>
     </div>
