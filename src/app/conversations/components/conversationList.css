@@ -1,2 +1,129 @@
 
 
+.ConversationList_container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 70px;
+    width: 200px;
+    margin-top: 0.5rem;
+    
+}
+
+.ConversationList_container_heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    
+} 
+
+.ConversationList_container_heading_icon {
+    color: var(--color-gray);
+    cursor: pointer;
+    margin-top: 5px;
+    margin-right: 1rem;
+}
+
+.ConversationList_container_heading_icon:hover {
+    color: var(--color-mediumGray);
+    transform: scale(1.1);
+}
+
+
+.ConversationList_container_heading h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-gray);
+}
+
+/* UserBox_container */
+.ConversationBox_container_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.3rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.ConversationBox_container_box:hover {
+    background-color:hwb(0 80% 19%);
+}
+
+.ConversationBox_container_box_data {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 0.5rem;
+    width: 100%;
+
+}
+
+
+.ConversationBox_container_box_data_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+
+.ConversationBox_container_box_data_top_name_bottom,
+.ConversationBox_container_box_data_top_name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-gray);
+}
+
+.ConversationBox_container_box_data_top_name_bottom_seen {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--color-lightGray);
+
+}
+
+
+.ConversationBox_container_box_data_top_time {
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: var(--color-lightGray);
+}
+
+.UserBox_container p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-gray);
+    margin-left: 0.5rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .ConversationList_container {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: 10px;
+        width: 100%;
+        margin-top: 0.5rem;
+       
+    }
+
+    .ConversationBox_container_box_data {
+        margin-right: 10px;
+    }
+    
+
+    
+}
+

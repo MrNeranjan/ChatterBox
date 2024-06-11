@@ -5,6 +5,7 @@ import './UserListStyle.css'
 import UserBox from './UserBox'
 
 export default function UserList({users}) {
+  
   return (
     <div className='UserList_container'>
       <div className='UserList_container_heading'>

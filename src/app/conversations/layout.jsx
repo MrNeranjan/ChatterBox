@@ -5,6 +5,8 @@ import ConversationList from "./components/ConversationList";
 export default async function ConversationLayout({ children }) {
 
   const conversations = await getConversations();
+  
+  console.log("conversations : ", conversations);
 
   return (
     <div >

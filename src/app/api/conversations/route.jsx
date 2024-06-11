@@ -18,7 +18,7 @@ export async function POST(request){
         }
 
         if (isGroup){
-            const newConversation = await prisma.Conversation.create({
+            const newConversation = await prisma.conversation.create({
                 data:{
                     name,
                     isGroup,
@@ -33,7 +33,7 @@ export async function POST(request){
             return NextResponse.json(newConversation);
         }
 
-        const existingConversation = await prisma.Conversation.findMany({
+        const existingConversation = await prisma.conversation.findMany({
             where: {
                 OR:[
                     {
@@ -57,9 +57,8 @@ export async function POST(request){
             return NextResponse.json(singleConversation);
         }
 
-        const newConversation = await prisma.Conversation.create({
+        const newConversation = await prisma.conversation.create({
             data:{
-                
                 users:{
                     connect:[
                         {id:currentUser.id},
@@ -71,7 +70,7 @@ export async function POST(request){
                 users:true
             }
         });
-
+        
         return NextResponse.json(newConversation);
 
     } catch (error) {

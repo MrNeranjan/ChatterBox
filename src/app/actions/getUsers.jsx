@@ -10,7 +10,7 @@ export default async function getUsers() {
   }
 
   try {
-    const users =await prisma.User.findMany({
+    const users =await prisma.user.findMany({
         orderBy: {
             createdAt: 'desc'
         }

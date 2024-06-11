@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useState } from 'react'
-import './ConversationList.css'
+import './conversationList.css'
 import { useRouter } from 'next/navigation';
 import UseConversation from '@/app/hooks/useConversation';
+import { MdOutlineGroupAdd } from 'react-icons/md';
+import ConversationBox from './ConversationBox';
 
 export default function ConversationList({initialItems}) {
   const [items,setItems] = useState(initialItems);
@@ -12,7 +14,21 @@ export default function ConversationList({initialItems}) {
   
   return (
     <div className='ConversationList_container'>
-      Conversation
+      <div className='ConversationList_container_heading'>
+          <h2>
+            Messages
+          </h2>
+          <MdOutlineGroupAdd size={23} className='ConversationList_container_heading_icon'/>
+      </div>
+      <div className='ConversationList_container__users'>
+        {items.map((item) =>(
+            <ConversationBox
+                key={item.id}
+                data={item}
+                selected={conversationId === item.id}
+            />
+        ))}
+      </div>
     </div>
   )
 }

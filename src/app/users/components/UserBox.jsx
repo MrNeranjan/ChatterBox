@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import React ,{useState ,useCallback} from 'react'
 
 export default function UserBox({user}) {
+    
     const router = useRouter()
     const [isLoading,setIsLoading] = useState(false)
 
@@ -13,7 +14,9 @@ export default function UserBox({user}) {
         setIsLoading(true)
         
         axios.post('/api/conversations',{
-            userId:user.id
+            userId:user.id,
+            name:user.name
+            
         })
         .then((user)=>{
             router.push(`/conversations/${user.data.id}`)
@@ -26,7 +29,7 @@ export default function UserBox({user}) {
 
   return (
     <div className='UserBox_container' onClick={handleClick}>   
-      <Avatar src={user} alt={user.name} />
+      <Avatar user={user} alt={user.name} />
       <div>
         <p>{user.name}</p>
       </div>
