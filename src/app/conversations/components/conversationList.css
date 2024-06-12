@@ -107,6 +107,11 @@
 }
 
 
+
+.ConversationList_container_open {
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
     .ConversationList_container {
         position: fixed;
@@ -122,6 +127,7 @@
     .ConversationBox_container_box_data {
         margin-right: 10px;
     }
+
     
 
     

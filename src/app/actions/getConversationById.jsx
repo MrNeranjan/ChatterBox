@@ -6,6 +6,7 @@ const getConversationById = async (conversationId) => {
         const currentUser = await getCurrentUser();
 
         if (!currentUser?.email){
+            console.log('!currentUser?.email inside getConversationById function return null' )
             return null;
         }
 
@@ -13,12 +14,14 @@ const getConversationById = async (conversationId) => {
             where: {
                 id: conversationId,
             },
-            include: {
-               include:{
-                     user: true,
-               }
+            
+            include:{
+                users: true,
             },
+        
         });
+
+       
 
         return conversation;
     } catch (error) {

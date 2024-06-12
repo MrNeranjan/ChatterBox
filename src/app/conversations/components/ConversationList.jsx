@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import clsx from 'clsx';
 import './conversationList.css'
 import { useRouter } from 'next/navigation';
 import UseConversation from '@/app/hooks/useConversation';
@@ -11,9 +12,12 @@ export default function ConversationList({initialItems}) {
   const [items,setItems] = useState(initialItems);
   const router = useRouter();
   const {conversationId,isOpen} = UseConversation();
+
   
   return (
-    <div className='ConversationList_container'>
+    <div className={clsx(
+      'ConversationList_container'
+      )} >
       <div className='ConversationList_container_heading'>
           <h2>
             Messages
