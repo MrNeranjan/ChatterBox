@@ -103,6 +103,36 @@
 
 }
 
+
+.MessageBox_container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-right: 2rem;
+}
+
+.MessageBox_container_own {
+    flex-direction: row-reverse; /* Reverse order for own messages */
+}
+
+.MessageBox_container_avatar {
+    order: 1; /* Default order */
+}
+
+.MessageBox_container_avatar_own {
+    order: 2; /* Order for own messages */
+}
+
+.MessageBox_container_body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.MessageBox_container_body_own {
+    align-items: flex-end;
+}
+
 @media screen and (max-width: 768px) {
     .HiChevronLeft {
         color: var(--color-Azure);

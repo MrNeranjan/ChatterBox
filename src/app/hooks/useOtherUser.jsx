@@ -8,9 +8,6 @@ const useOtherUser = (conversation) => {
         const currentUserEmail = session?.user?.email;
 
         const otherUser = conversation.users.filter((user) => user.email !== currentUserEmail);
-
-        console.log('otheruser[0] :',otherUser[0]);
-        
         return otherUser[0];
         
     }, [session?.user?.email, conversation.users]);

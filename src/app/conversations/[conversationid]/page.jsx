@@ -10,12 +10,13 @@ import styles from "./styling.css";
 
 const ConversationId  = async ({params}) => {
 
-    
-    
+    console.log("params inside the ConversationId",params)
+
     const conversation = await getConversationById(params.conversationid);
-    const messages = await getMessages(params.conversationId);
+    console.log("params inside the ConversationId",params.conversationid)
 
-
+    const messages = await getMessages(params.conversationid);
+    console.log("messages insdide the ConversationId",messages);
 
     if (!conversation){
         return (
@@ -28,7 +29,7 @@ const ConversationId  = async ({params}) => {
     return(
         <div className="conversationBox_container">
             <Header conversation={conversation}/>
-            <Body/>
+            <Body initialMessages={messages}/>
             <div className="conversationBox_container_form">
                 <Form />
             </div>
