@@ -2,12 +2,15 @@ import Avatar from '@/app/pages/components/avatar';
 import clsx from 'clsx';
 import { format } from 'date-fns';
 import { useSession } from 'next-auth/react'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
+
+import ImageModalBox from './ImageModalBox';
 
 function MessageBox({data,isLast}) {
 
     const session = useSession();
+    const [isImageModalOpen,setIsImageModalOpen] =useState(false);
     
 
     const isOwn  = session?.data?.user?.email === data?.sender?.email;
@@ -44,9 +47,15 @@ function MessageBox({data,isLast}) {
                     </div>
                 </div>
                 <div>
+                    <ImageModalBox
+                        src={data.image}
+                        isOpen={isImageModalOpen}
+                        onClose={()=>setIsImageModalOpen(false)}
+                    
+                    />
                     {
                         data.image ?(
-                            <Image src={data.image} alt="message image" width={200} height={200} />
+                            <Image src={data.image} alt="message image" width={200} height={200} onClick={()=>setIsImageModalOpen(true)}/>
                         ):(
                             <div>{data.body}</div>
                         )

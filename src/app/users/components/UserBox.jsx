@@ -4,6 +4,7 @@ import axios from 'axios'
 import Avatar from '@/app/pages/components/avatar'
 import { useRouter } from 'next/navigation'
 import React ,{useState ,useCallback} from 'react'
+import LoadingModal from '@/app/pages/components/LoadingModal'
 
 export default function UserBox({user}) {
     
@@ -28,11 +29,14 @@ export default function UserBox({user}) {
 
 
   return (
+    <>
+    {isLoading && <LoadingModal/>}
     <div className='UserBox_container' onClick={handleClick}>   
       <Avatar user={user} alt={user.name} />
       <div>
         <p>{user.name}</p>
       </div>
     </div>
+    </>
   )
 }

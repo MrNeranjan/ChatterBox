@@ -121,6 +121,16 @@ function ProfileDrawer({ data, isOpen, onClose }) {
                                                     <IoTrash size={32}  />
                                                     <p style={{ marginLeft: '8px' }}>Delete</p>
                                                 </div>
+                                                {data.isGroup && (
+                                                    <div>
+                                                        <div>
+                                                            Emails
+                                                        </div>
+                                 
+                                 
+                                                        {data.users.map((user)=>user.email).join(", ")}
+                                                    </div>
+                                                )}
                                                 {!data.isGroup && (
                                                     <div style={{ marginTop: '16px' }}>
                                                         <p>Email</p>
