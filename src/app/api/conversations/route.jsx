@@ -4,23 +4,29 @@ import prisma from "@/app/libs/prismadb";
 
 
 export async function POST(request){
+
+    
     try {
         const currentUser = await getCurrentUser();
         const body = await request.json();
-        const {userId,isGroup,members,name} = body;
+        console.log("post request for group creation",body)
 
+        const {userId,isGroup,members,Name} = body;
+        
+       
         if (!currentUser?.id || !currentUser?.email){
             return new NextResponse('Unauthorized',{status:401})
         }
 
-        if (isGroup && (!members || members.length < 2 || !name)){
+        if (isGroup && (!members || members.length < 2 || !Name)){
+            console.log("post request for group creation !members || members.length < 2 || !name")
             return new NextResponse('Invalid data',{status:400})
         }
 
         if (isGroup){
             const newConversation = await prisma.conversation.create({
                 data:{
-                    name,
+                    name:Name,
                     isGroup,
                     users: {
                         connect: [

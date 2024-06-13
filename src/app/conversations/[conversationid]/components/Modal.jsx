@@ -5,6 +5,7 @@ import { Dialog, Transition,DialogPanel,TransitionChild } from '@headlessui/reac
 import { IoClose } from 'react-icons/io5';
 
 function Modal({ isOpen, onClose, children }) {
+    
     return (
         <Transition show={isOpen} as={Fragment}>
             <Dialog as="div" style={{ position: 'relative', zIndex: 50 }} onClose={onClose}>

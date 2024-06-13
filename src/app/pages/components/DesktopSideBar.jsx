@@ -4,12 +4,14 @@ import UseRoutes from "../../hooks/useRoutes";
 import React, { useState } from "react";
 import DesktopItem from "./DesktopItem";
 import Avatar from "./avatar";
+import SettingModal from "./SettingModal";
 
 function DesktopSideBar({ currentUser }) {
   const routes = UseRoutes();
   const [isOpen, setIsOpen] = useState(false);
   
   return (
+    <>
     <div className="DesktopSideBar_container">
       <nav className="DesktopSideBar_nav">
         <div className="DesktopSideBar_nav_mapping">
@@ -26,15 +28,23 @@ function DesktopSideBar({ currentUser }) {
           <div
             className="DesktopSideBar_nav_avatar"
             onClick={() => setIsOpen(true)}
+            
           >
-            <Avatar user={currentUser}/>
-            <span
+            <Avatar user={currentUser} />
+              <span
               className="DesktopSideBar_nav_avatar_status"
             ></span>
           </div>
         </div>
       </nav>
     </div>
+     <SettingModal 
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        currentUser={currentUser}
+
+      />
+    </>
   );
 }
 

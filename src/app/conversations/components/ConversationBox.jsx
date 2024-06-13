@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react';
 import clsx from 'clsx';
 import useOtherUser from '@/app/hooks/useOtherUser';
 import Avatar from '@/app/pages/components/avatar';
+import AvatarGroup from '@/app/pages/components/AvatarGroup';
 
 function ConversationBox({data,selected}) {
   const otherUser = useOtherUser(data);
@@ -63,7 +64,7 @@ function ConversationBox({data,selected}) {
     >
         {otherUser ? (
           <div className='ConversationBox_container_box'>
-            <Avatar src={otherUser} />
+            {data.isGroup ? (<AvatarGroup src={data.users} />):<Avatar src={otherUser} />}
             <div className='ConversationBox_container_box_data'>
               <div className='ConversationBox_container_box_data_top'>
                   <p className='ConversationBox_container_box_data_top_name'>{data.name || otherUser.name}</p>
