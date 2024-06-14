@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import ToasterContext from "./context/ToasterContext";
 import AuthContext from "./context/AuthContext";
+import ActiveStatus from "./pages/components/ActiveStatus";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -19,6 +20,7 @@ export default function RootLayout({ children,session }) {
       <body className={roboto.className}>
         <AuthContext session={session}>
           <ToasterContext/>
+          <ActiveStatus/>
           {children}
         </AuthContext>
       </body>

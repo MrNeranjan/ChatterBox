@@ -7,11 +7,14 @@ import { Dialog, Transition,DialogPanel,TransitionChild } from '@headlessui/reac
 import { IoClose, IoTrash } from 'react-icons/io5';
 import Avatar from '@/app/pages/components/avatar';
 import ConfirmModal from './ConfirmModal';
+import useActiveList from '@/app/hooks/useActiveList';
 
 function ProfileDrawer({ data, isOpen, onClose }) {
 
     const otherUser = useOtherUser(data);
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const {members} = useActiveList();
+    const isActive = members.indexOf(otherUser?.email) !== -1
 
     const joinedDate = useMemo(() => {
         return format(new Date(otherUser.createdAt), 'PP');
@@ -25,8 +28,8 @@ function ProfileDrawer({ data, isOpen, onClose }) {
         if (data.isGroup) {
             return `${data.users.length} members`;
         }
-        return 'Active';
-    }, [data]);
+        return isActive ?'Active':'Offline';
+    }, [data,isActive]);
 
     return (
         <>   

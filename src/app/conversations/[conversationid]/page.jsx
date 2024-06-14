@@ -10,13 +10,13 @@ import styles from "./styling.css";
 
 const ConversationId  = async ({params}) => {
 
-    console.log("params inside the ConversationId",params)
+    
 
     const conversation = await getConversationById(params.conversationid);
-    console.log("params inside the ConversationId",params.conversationid)
+    
 
     const messages = await getMessages(params.conversationid);
-    console.log("messages insdide the ConversationId",messages);
+    
 
     if (!conversation){
         return (
